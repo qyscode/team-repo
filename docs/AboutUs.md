@@ -13,13 +13,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### John Doe
 
-<img src="images/emperorgaodi.png" width="200px">
+<img src="images/johndoe.png" width="200px">
 
-[[homepage]()]
-[[github](https://github.com/emperorgaodi)]
-[[portfolio]()]
+[[homepage](http://www.comp.nus.edu.sg/~damithch)]
+[[github](https://github.com/johndoe)]
+[[portfolio](team/johndoe.md)]
 
-* Role: Team Member
+* Role: Project Advisor
 
 ### Jane Doe
 
