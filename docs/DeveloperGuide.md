@@ -340,7 +340,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: Search for an employee**
+**Use case 4 (UC4): Search for an employee**
 
 **MSS**
 
