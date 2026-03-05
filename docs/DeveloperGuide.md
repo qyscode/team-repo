@@ -317,7 +317,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 (For all use cases below, the **System** is the `HRmanager` and the **Actor** is the `user`, unless specified otherwise)
 
 
-**Use case 1 (UC1): Add employee**
+### Use case 1 (UC1): Add employee
 
 **MSS**
 
@@ -332,12 +332,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. System detects an error (e.g. format/syntax error) in the entered data.
     * 1a1. System displays an error message with the correct format.
     * 1a2. User enters new data.
-      Steps 1a1-1a2 are repeated until the data entered are correct.
+    Steps 1a1-1a2 are repeated until the data entered are correct.
       
-      Use case resumes from step 2.
+    Use case resumes from step 2.
       
 
-**Use case 2 (UC2): Delete employee**
+### Use case 2 (UC2): Delete employee
 
 **MSS**
 
@@ -354,15 +354,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a2. User enters new data in the correct format.
       Steps 1a1-1a2 are repeated until the data entered are correct.
   
-      Use case resumes from step 2.
+    Use case resumes from step 2.
       
 * 1b. System detects that there is no such matching employee in the list.
     * 1b1. System displays an error message "Error: Employee (data) not found.
       
-      Use case ends.
+    Use case ends.
 
 
-**Use case 3 (UC3): View employees**
+### Use case 3 (UC3): View employees
 
 **MSS**
 
@@ -379,7 +379,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends
 
 
-**Use case 4 (UC4): Search for an employee**
+### Use case 4 (UC4): Search for an employee
 
 **MSS**
 
@@ -401,11 +401,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       
     Use case ends.
 
-**Use case 5 (UC5): Tag an employee**
-
-**Preconditions: There are users in the HRManager**
-
-**Guarantees: Employee is updated with the new tag**
+### Use case 5 (UC5): Tag an employee
 
 **MSS**
 
@@ -421,35 +417,32 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 2a. The list is empty.
+    * 2a1. System informs user that there are no employees to tag.
       
-      Use case ends.
+    Use case ends.
 
 * 3a. The given index is invalid.
-    * 3a1. HRManager shows an error message.
+    * 3a1. System shows an error message.
       
     Use case resumes at step 1.
 
 * 5a. The tag name provided is already associated with this person.
-    * 5a1. HRManager shows an error message indicating the tag is a duplicate.
+    * 5a1. System shows an error message indicating the tag is a duplicate.
       
     Use case resumes at step 2.
 
 * 5b. The tag name provided is invalid (e.g., blank or contains forbidden characters).
-    * 5b1. HRManager shows an error message describing valid tag format.
+    * 5b1. System shows an error message describing valid tag format.
       
     Use case resumes at step 4.
 
 * a. At any time, the User chooses to cancel the tagging operation.
-    * a1. HRManager cancels the tagging.
+    * a1. System cancels the tagging.
     
     Use case ends.
 
 
-**Use case: UC6 - Edit an employee's details**
-
-**Preconditions: Employee to be edited exists in the list**
-
-**Guarantees: Employee's details will be edited to what the user entered**
+### Use case: UC6 - Edit an employee's details
 
 **MSS**
 
