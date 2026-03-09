@@ -1,7 +1,7 @@
 {
   "baseUrl": "",
   "titlePrefix": "MyProduct",
-  "titleSuffix": "HRmanager Level-3",
+  "titleSuffix": "HRmanager",
   "faviconPath": "images/SeEduLogo.png",
   "style": {
     "codeTheme": "light"

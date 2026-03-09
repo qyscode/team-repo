@@ -22,8 +22,8 @@ public class JsonSerializableHrmanagerTest {
 
     @Test
     public void toModelType_typicalPersonsFile_success() throws Exception {
-        JsonSerializableHRmanager dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
-                JsonSerializableHRmanager.class).get();
+        JsonSerializableHrmanager dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
+                JsonSerializableHrmanager.class).get();
         Hrmanager HrmanagerFromFile = dataFromFile.toModelType();
         Hrmanager typicalPersonsHrmanager = TypicalPersons.getTypicalHrmanager();
         assertEquals(HrmanagerFromFile, typicalPersonsHrmanager);
@@ -31,16 +31,16 @@ public class JsonSerializableHrmanagerTest {
 
     @Test
     public void toModelType_invalidPersonFile_throwsIllegalValueException() throws Exception {
-        JsonSerializableHRmanager dataFromFile = JsonUtil.readJsonFile(INVALID_PERSON_FILE,
-                JsonSerializableHRmanager.class).get();
+        JsonSerializableHrmanager dataFromFile = JsonUtil.readJsonFile(INVALID_PERSON_FILE,
+                JsonSerializableHrmanager.class).get();
         assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }
 
     @Test
     public void toModelType_duplicatePersons_throwsIllegalValueException() throws Exception {
-        JsonSerializableHRmanager dataFromFile = JsonUtil.readJsonFile(DUPLICATE_PERSON_FILE,
-                JsonSerializableHRmanager.class).get();
-        assertThrows(IllegalValueException.class, JsonSerializableHRmanager.MESSAGE_DUPLICATE_PERSON,
+        JsonSerializableHrmanager dataFromFile = JsonUtil.readJsonFile(DUPLICATE_PERSON_FILE,
+                JsonSerializableHrmanager.class).get();
+        assertThrows(IllegalValueException.class, JsonSerializableHrmanager.MESSAGE_DUPLICATE_PERSON,
                 dataFromFile::toModelType);
     }
 

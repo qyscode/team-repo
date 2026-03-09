@@ -45,8 +45,8 @@ public class JsonHrmanagerStorage implements HrmanagerStorage {
     public Optional<ReadOnlyHrmanager> readHrmanager(Path filePath) throws DataLoadingException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableHRmanager> jsonHrmanager = JsonUtil.readJsonFile(
-                filePath, JsonSerializableHRmanager.class);
+        Optional<JsonSerializableHrmanager> jsonHrmanager = JsonUtil.readJsonFile(
+                filePath, JsonSerializableHrmanager.class);
         if (!jsonHrmanager.isPresent()) {
             return Optional.empty();
         }
@@ -74,7 +74,7 @@ public class JsonHrmanagerStorage implements HrmanagerStorage {
         requireNonNull(filePath);
 
         FileUtil.createIfMissing(filePath);
-        JsonUtil.saveJsonFile(new JsonSerializableHRmanager(addressBook), filePath);
+        JsonUtil.saveJsonFile(new JsonSerializableHrmanager(addressBook), filePath);
     }
 
 }

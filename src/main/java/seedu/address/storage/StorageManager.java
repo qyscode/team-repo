@@ -17,14 +17,14 @@ import seedu.address.model.UserPrefs;
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private HrmanagerStorage HRmanagerStorage;
+    private HrmanagerStorage HrmanagerStorage;
     private UserPrefsStorage userPrefsStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code HrmanagerStorage} and {@code UserPrefStorage}.
      */
-    public StorageManager(HrmanagerStorage HRmanagerStorage, UserPrefsStorage userPrefsStorage) {
-        this.HRmanagerStorage = HRmanagerStorage;
+    public StorageManager(HrmanagerStorage HrmanagerStorage, UserPrefsStorage userPrefsStorage) {
+        this.HrmanagerStorage = HrmanagerStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
 
@@ -50,29 +50,29 @@ public class StorageManager implements Storage {
 
     @Override
     public Path getHrmanagerFilePath() {
-        return HRmanagerStorage.getHrmanagerFilePath();
+        return HrmanagerStorage.getHrmanagerFilePath();
     }
 
     @Override
     public Optional<ReadOnlyHrmanager> readHrmanager() throws DataLoadingException {
-        return readHrmanager(HRmanagerStorage.getHrmanagerFilePath());
+        return readHrmanager(HrmanagerStorage.getHrmanagerFilePath());
     }
 
     @Override
     public Optional<ReadOnlyHrmanager> readHrmanager(Path filePath) throws DataLoadingException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return HRmanagerStorage.readHrmanager(filePath);
+        return HrmanagerStorage.readHrmanager(filePath);
     }
 
     @Override
     public void saveHrmanager(ReadOnlyHrmanager addressBook) throws IOException {
-        saveHrmanager(addressBook, HRmanagerStorage.getHrmanagerFilePath());
+        saveHrmanager(addressBook, HrmanagerStorage.getHrmanagerFilePath());
     }
 
     @Override
     public void saveHrmanager(ReadOnlyHrmanager addressBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        HRmanagerStorage.saveHrmanager(addressBook, filePath);
+        HrmanagerStorage.saveHrmanager(addressBook, filePath);
     }
 
 }
