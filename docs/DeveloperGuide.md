@@ -362,9 +362,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to remove a person by passing the target employee's details
-2.  System removes the person from the records.
-3.  System displays confirmation message.
+1. User requests to remove one or more employees by specifying their index numbers in the displayed list.
+2. System validates the provided index numbers.
+3. System removes the corresponding employee records from the system.
+4. System displays a confirmation message indicating the number of employees deleted.
 
     Use case ends.
 
@@ -377,8 +378,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes from step 2.
 
-* 1b. System detects that there is no such matching employee in the list.
-    * 1b1. System displays an error message "Error: Employee (data) not found.
+* 2a. One or more indexes are invalid (e.g., index exceeds list size).
+    * 2a1. System displays an error message indicating the invalid index.
     
     Use case ends.
 
@@ -553,17 +554,23 @@ testers are expected to do more *exploratory* testing.
 
 ### Deleting a person
 
-1. Deleting a person while all persons are being shown
+1. Deleting one or more persons while all persons are being shown
 
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
    2. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   
+   3. Test case: `delete 1 2`<br>  
+      Expected: First and second contacts are deleted. Status message indicates two employees were deleted.
+   
+   4. Test case: `delete 2 2 3`<br>  
+      Expected: Duplicate indexes are ignored. Contacts 2 and 3 are deleted once.
 
-   3. Test case: `delete 0`<br>
+   5. Test case: `delete 0`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   6. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
 ### Tagging a person

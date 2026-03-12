@@ -141,17 +141,19 @@ Examples:
 
 ### Deleting an employee : `delete`
 
-Deletes the specified employee from HRmanager.
+Deletes one or more employees from the list using their displayed index numbers.
 
-Format: `delete INDEX`
+Format: `delete  [MORE_INDEXES]`
 
 * Deletes the employee at the specified `INDEX`.
 * The index refers to the index number shown in the displayed employee list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* Multiple indexes can be provided to delete multiple employees in one command.
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd employee in HRmanager.
 * `search Betsy` followed by `delete 1` deletes the 1st employee in the results of the `search` command.
+* `delete 1 3 5` deletes the 1st, 3rd, and 5th employees in the displayed list.
 
 ### Clearing all entries : `clear`
 
