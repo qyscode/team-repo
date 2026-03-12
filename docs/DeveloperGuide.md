@@ -35,7 +35,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2526S2-CS2103T-T13-1/tp/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2526S2-CS2103T-T13-1/tp/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -67,13 +67,13 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2526S2-CS2103T-T13-1/tp/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2526S2-CS2103T-T13-1/tp/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2526S2-CS2103T-T13-1/tp/tree/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -84,7 +84,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2526S2-CS2103T-T13-1/tp/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -116,15 +116,15 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2526S2-CS2103T-T13-1/tp/tree/master/src/main/java/seedu/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
 
 The `Model` component,
 
-* stores the HRManager data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores HRmanager's employee records, i.e. all `Person` objects (which are contained in a `UniquePersonList` object).
+* stores the currently selected `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be observed. The UI can be bound to this list so that it updates automatically when the data changes.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
@@ -139,12 +139,12 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2526S2-CS2103T-T13-1/tp/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both HRManager data and user preference data in JSON format, and read them back into corresponding objects.
+* can save both HRmanager data and user preference data in JSON format, and read them back into corresponding objects.
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
@@ -164,33 +164,33 @@ This section describes some noteworthy details on how certain features are imple
 
 The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
-* `VersionedAddressBook#commit()` — Saves the current HRManager state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous HRManager state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone HRManager state from its history.
+* `VersionedAddressBook#commit()` — Saves the current HRmanager state in its history.
+* `VersionedAddressBook#undo()` — Restores the previous HRmanager state from its history.
+* `VersionedAddressBook#redo()` — Restores a previously undone HRmanager state from its history.
 
 These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
 
 Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial HRManager state, and the `currentStatePointer` pointing to that single HRManager state.
+Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial HRmanager state, and the `currentStatePointer` pointing to that single HRmanager state.
 
 <puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the HRManager. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the HRManager after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted HRManager state.
+Step 2. The user executes `delete 5` command to delete the 5th person in the HRmanager. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the HRmanager after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted HRmanager state.
 
 <puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
 
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified HRManager state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified HRmanager state to be saved into the `addressBookStateList`.
 
 <puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
 
 <box type="info" seamless>
 
-**Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the HRManager state will not be saved into the `addressBookStateList`.
+**Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the HRmanager state will not be saved into the `addressBookStateList`.
 
 </box>
 
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous HRManager state, and restores the HRManager to that state.
+Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous HRmanager state, and restores the HRmanager to that state.
 
 <puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
 
@@ -216,19 +216,19 @@ Similarly, how an undo operation goes through the `Model` component is shown bel
 
 <puml src="diagrams/UndoSequenceDiagram-Model.puml" alt="UndoSequenceDiagram-Model" />
 
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the HRManager to that state.
+The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the HRmanager to that state.
 
 <box type="info" seamless>
 
-**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest HRManager state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest HRmanager state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 
 </box>
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the HRManager, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
+Step 5. The user then decides to execute the command `list`. Commands that do not modify the HRmanager, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
 
 <puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
 
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all HRManager states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
+Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all HRmanager states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
 
 <puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
 
@@ -240,7 +240,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 **Aspect: How undo & redo executes:**
 
-* **Alternative 1 (current choice):** Saves the entire HRManager.
+* **Alternative 1 (current choice):** Saves the entire HRmanager.
   * Pros: Easy to implement.
   * Cons: May have performance issues in terms of memory usage.
 
@@ -254,6 +254,27 @@ _{more aspects and alternatives to be added}_
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
+
+### Search feature
+
+The `search` command is implemented by `SearchCommand`, `SearchCommandParser`, and `NameContainsKeywordsPredicate`.
+
+The flow is as follows:
+
+1. The user enters `search KEYWORD [MORE_KEYWORDS]...`.
+2. `AddressBookParser` routes the input to `SearchCommandParser`.
+3. `SearchCommandParser` trims the arguments, rejects blank input, rejects searches with more than 100 keywords, and rejects any keyword longer than 100 characters.
+4. If parsing succeeds, `SearchCommand` is created with a `NameContainsKeywordsPredicate`.
+5. `SearchCommand#execute` updates the model's filtered employee list and returns feedback in the form `X employees listed!`.
+
+Matching behavior:
+
+* search is case-insensitive
+* only employee names are searched
+* each keyword is treated as a partial substring match rather than a full-word match
+* multiple keywords are combined using `OR` semantics
+
+This means a command such as `search ali tan` returns employees whose names contain either `ali` or `tan`, regardless of case.
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -274,14 +295,14 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**: Human Resource Manager
 
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of employee and applicant records
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
 **Value proposition**:
-- manage contacts faster than a typical mouse/GUI driven app
+- manage employee records faster than a typical mouse/GUI driven app
 - provides fast access to employee details, with sorting options for further clarity
 - view job applicants details at a glance and decide whether to proceed with interviews and hiring
 
@@ -296,7 +317,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *` | user                               | delete an employee                     | clear up data when it is no longer needed                  |
 | `* * *` | user                               | view all employees                     | gain a brief overview of everyone in the company           |
 | `* * *` | user                               | store phone numbers and email addresses | contact employees easily                                   |
-| `* * *` | busy user                          | search for employees                   | quickly find a specific staff member                       |
+| `* * *` | busy user                          | search for employees by name           | quickly find a specific staff member                       |
 | `* * *` | busy user                          | add contacts with only name and phone  | track someone now and update details later                 |
 | `* * `  | organised user                     | modify employee details                | keep info up to date                                       |
 | `* * `  | organised user                     | sort employees by variables            | find the most relevant employees for my needs              |
@@ -383,21 +404,28 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests a search for employee(s).
-2.  System processes the search query against the existing employee records.
-3.  System displays a list of all employees that match the search.
-
+1.  User enters the `search` command with one or more name keywords.
+2.  System validates the search input.
+3.  System processes the search query against the existing employee records.
+4.  System displays a list of all employees that match the search.
+    Matching is case-insensitive, supports partial-name matching, and returns employees that match any one of the supplied keywords.
+    
     Use case ends.
 
 **Extensions**
 
-* 1a. The user executes the search with invalid command
-    * 1a1. System displays an error message indicating that search command is invalid, with guide on how to properly form it.
-
+* 1a. The user executes `search` with blank input.
+    * 1a1. System displays an invalid command format message together with the proper `search` usage.
+      
     Use case resumes at step 1.
 
-* 2a. No employees match the provided search query.
-    * 2a1. System displays a message indicating that the search yielded no results (e.g., "0 employees listed!"). 
+* 1b. The user provides more than 100 keywords, or at least one keyword longer than 100 characters.
+    * 1b1. System displays an invalid command format message together with the proper `search` usage.
+      
+    Use case resumes at step 1.
+
+* 3a. No employees match the provided search query.
+    * 3a1. System displays `0 employees listed!`.
       
     Use case ends.
 
