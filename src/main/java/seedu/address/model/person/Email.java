@@ -40,6 +40,7 @@ public class Email {
      */
     public Email(String email) {
         requireNonNull(email);
+        checkArgument(email.length() <= 50, "Email must be 50 characters or less");
         checkArgument(isValidEmail(email), MESSAGE_CONSTRAINTS);
         value = email;
     }
