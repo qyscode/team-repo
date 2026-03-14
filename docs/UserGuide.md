@@ -80,7 +80,7 @@ Format: `help`
 
 Adds an employee to HRmanager.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add NAME e/EMAIL p/PHONE r/ROLE [t/TAG]…​`
 
 <box type="tip" seamless>
 
@@ -88,8 +88,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 </box>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
+* `add Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
 ### Listing all employees : `list`
 
@@ -101,7 +101,7 @@ Format: `list`
 
 Edits an existing employee in HRmanager.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [NAME] [p/PHONE] [e/EMAIL] [a/ROLE] [t/TAG]…​`
 
 * Edits the employee at the specified `INDEX`. The index refers to the index number shown in the displayed employee list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -201,10 +201,10 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add**    | `add NAME p/PHONE_NUMBER e/EMAIL r/ROLE [t/TAG]…​` <br> e.g., `add James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit**   | `edit INDEX [NAME] [p/PHONE_NUMBER] [e/EMAIL] [r/ROLE] [t/TAG]…​`<br> e.g.,`edit 2 James Lee e/jameslee@example.com`
 **Search** | `search KEYWORD [MORE_KEYWORDS]...`<br> e.g., `search James Jake`
 **List**   | `list`
 **Help**   | `help`

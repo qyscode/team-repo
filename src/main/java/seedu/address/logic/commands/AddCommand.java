@@ -17,18 +17,31 @@ import seedu.address.model.person.Person;
  * Adds a person to the address book.
  */
 public class AddCommand extends Command {
+/*    public static final int NAME_MAX_LENGTH = 50;
+
+
+
+    public static final String MESSAGE_CONSTRAINTS = "Tags names should be alphanumeric and "
+            + "between 1 to " + MAX_LENGTH + " characters long";
+    public static final String VALIDATION_REGEX = "\\p{Alnum}{1," + MAX_LENGTH + "}";
+
+
+- name: string with only alphabets, no special characters, except "-", max 50 chars, accept whatever casing user submits
+- email: 50 chars alphanumeric, no special chars except "@" and ".", must not start with ".", cannot have "." next to each other, must have one "." after "@"
+
+*/
 
     public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
             + "Parameters: "
-            + PREFIX_NAME + "NAME "
+            + "NAME "
             + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ROLE + "ROLE "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
+            + "John Doe "
             + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_ROLE + "Software Engineer "
@@ -36,7 +49,7 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in HRManager";
 
     private final Person toAdd;
 
